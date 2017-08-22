@@ -34,3 +34,5 @@ Release/
 
 
 *~.xml
+
+__pycache__/

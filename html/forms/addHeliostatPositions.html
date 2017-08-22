@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>addHeliostatPositions</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<div class="container">
+		<h2>addHeliostatPositions</h2>
+		<form action="/addHeliostatPositions" method="post">
+			<div class="form-group">
+				<label for="csvData">[Position x, Position y, Position x, Transmission x, Transmission Y, Transmission z]:</label>
+				<textarea class="form-control" rows="5" id="csvData" name="csvData"></textarea>
+			</div>
+
+			<div class="radio">
+				<label><input type="radio" name="action" value="append" checked="checked">Add to existing</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="action" value="truncate">Delete existing</label>
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+
+</body>
+
+</html>
