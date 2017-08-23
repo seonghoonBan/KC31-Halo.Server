@@ -1,18 +1,24 @@
 import threading
 import os
+import os.path
 import base64
 import json
 import requests
 import IPython
 import datetime
 import re
+
 import flask
+from flask.ext.autoindex import AutoIndex
+
 import bson.json_util
+from bson.objectid import ObjectId
 import pymongo
 import csv
 
 from flask import Flask, render_template, request, jsonify, send_from_directory
 app = Flask(__name__)
+AutoIndex(app, browse_root=os.path.curdir)
 
 mongoClient = pymongo.MongoClient('localhost', 27017)
 db = mongoClient.KC31
@@ -122,3 +128,7 @@ def addHeliostatPositions():
 @app.route('/getHeliostatPositions')
 def getHeliostatPositions():
 	return bson.json_util.dumps(db.heliostatpositions.find({}))
+
+@app.route('/getHeliostatPosition/<string:id>')
+def getHeliostatPosition(id):
+	return bson.json_util.dumps(db.heliostatpositions.find({"_id" : ObjectId(id)}))

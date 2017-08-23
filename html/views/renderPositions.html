@@ -5,17 +5,40 @@
 	<title>renderPositions</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="js/node_modules/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
 </head>
 
 <body>
-    <div id="container"></div>
-    <script src="js/three.js/build/three.min.js"></script>
-    <script src="js/three.js/examples/js/controls/TrackballControls.js"></script>
-    <script src="js/three.js/examples/js/libs/stats.min.js"></script>
-    <script src="js/three.js/examples/js/Detector.js"></script>
+    <div class="row" style="height: 100%">
+        <div class="col-sm-8" id="mainView"></div>
+        <div class="col-sm-4" id="detailView" style="height: 100vh;">
+            <div id="heliostatPositionEditor" style="height: 50%; padding-bottom:50px; margin-bottom: -50px;"></div>
+            <div id="buttons" style="height: 50px;">
+                <button type="button" class="btn btn-primary" id="heliostatPositionCommit" style="visibility: hidden;">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+                <button type="button" class="btn btn-secondary" id="heliostatPositionRefresh" style="visibility: hidden;">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                </button>
+                
+            </div>
+            <div id="heliostatModuleEditor" style="height: 50%"></div>
+        </div>
+
+        <div id="alertConsole" style="position: absolute; z-index: 1000">
+
+        </div>
+    </div>
+    <script src="js/node_modules/three/build/three.min.js"></script>
+    <script src="js/node_modules/three/examples/js/controls/OrbitControls.js"></script>
+    <script src="js/node_modules/three/examples/js/libs/stats.min.js"></script>
+    <script src="js/node_modules/three/examples/js/Detector.js"></script>
+
+    <script src="js/node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
+
     <script src="js/renderPositions.js"></script>
 </body>
 
