@@ -35,4 +35,5 @@ Release/
 
 *~.xml
 
-__pycache__/**
+*.pyc
+*.pyo

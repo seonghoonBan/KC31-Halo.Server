@@ -9,26 +9,37 @@
     <link href="js/node_modules/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
+    <style>
+        #body {
+            position: relative;
+            margin: hidden;
+        }
+        .annotation {
+            font-size: 10px;
+        }
+
+    </style>
 </head>
 
 <body>
     <div class="row" style="height: 100%">
-        <div class="col-sm-8" id="mainView"></div>
+        <div class="col-sm-8" id="mainView">
+            <div id="annotations" style="position:absolute; left:0; top:0;width:100%; height:100%; overflow: hidden; pointer-events: none; margin: none;"></div>
+        </div>
         <div class="col-sm-4" id="detailView" style="height: 100vh;">
             <div id="heliostatPositionEditor" style="height: 50%; padding-bottom:50px; margin-bottom: -50px;"></div>
             <div id="buttons" style="height: 50px;">
-                <button type="button" class="btn btn-primary" id="heliostatPositionCommit" style="visibility: hidden;">
-                    <span class="glyphicon glyphicon-ok"></span>
-                </button>
                 <button type="button" class="btn btn-secondary" id="heliostatPositionRefresh" style="visibility: hidden;">
                     <span class="glyphicon glyphicon-refresh"></span>
                 </button>
-                
+                <button type="button" class="btn btn-primary" id="heliostatPositionCommit" style="visibility: hidden;">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
             </div>
             <div id="heliostatModuleEditor" style="height: 50%"></div>
         </div>
 
-        <div id="alertConsole" style="position: absolute; z-index: 1000">
+        <div id="alertConsole" style="position: absolute; padding-left: 100px; width: 100%; z-index: 1000">
 
         </div>
     </div>
@@ -36,6 +47,7 @@
     <script src="js/node_modules/three/examples/js/controls/OrbitControls.js"></script>
     <script src="js/node_modules/three/examples/js/libs/stats.min.js"></script>
     <script src="js/node_modules/three/examples/js/Detector.js"></script>
+    <script src="js/node_modules/three/examples/js/renderers/Projector.js"></script>
 
     <script src="js/node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
 

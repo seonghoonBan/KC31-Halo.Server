@@ -132,3 +132,12 @@ def getHeliostatPositions():
 @app.route('/getHeliostatPosition/<string:id>')
 def getHeliostatPosition(id):
 	return bson.json_util.dumps(db.heliostatpositions.find({"_id" : ObjectId(id)}))
+
+@app.route('/updateHeliostatPosition', methods=['POST'])
+def updateHeliostatPosition():
+	jsonRequest = request.json
+	id = request.json['_id']['$oid']
+	jsonRequest.pop('_id', None)
+	db.heliostatpositions.update({'_id' : ObjectId(id)}
+		, {'$set' : jsonRequest})
+	return jsonify({'success' : 'true'})
