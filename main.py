@@ -16,6 +16,8 @@ from bson.objectid import ObjectId
 import pymongo
 import csv
 
+import pysolar
+
 from flask import Flask, render_template, request, jsonify, send_from_directory
 app = Flask(__name__)
 AutoIndex(app, browse_root=os.path.curdir)
@@ -135,9 +137,32 @@ def getHeliostatPosition(id):
 
 @app.route('/updateHeliostatPosition', methods=['POST'])
 def updateHeliostatPosition():
+	IPython.embed();
 	jsonRequest = request.json
 	id = request.json['_id']['$oid']
 	jsonRequest.pop('_id', None)
 	db.heliostatpositions.update({'_id' : ObjectId(id)}
 		, {'$set' : jsonRequest})
 	return jsonify({'success' : 'true'})
+
+@app.route('/getSiteSettings')
+def getSiteSettings():
+	return bson.json_util.dumps(db.settings.find_one());
+
+@app.route('/getSolarTracking')
+def getSolarTracking():
+	siteSettings = json.loads(getSiteSettings())
+	now = datetime.datetime.now()
+	
+	latitude = siteSettings['location']['latitude'];
+	longitude = siteSettings['location']['longitude'];
+
+	solarTracking = {
+		"sun" : {
+			"altitude" : pysolar.solar.get_altitude(latitude, longitude, now),
+			"azimuth" : pysolar.solar.get_azimuth(latitude, longitude, now)
+		},
+		"siteSettings" : siteSettings
+	}
+	return jsonify(solarTracking)
+	

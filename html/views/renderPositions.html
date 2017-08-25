@@ -5,10 +5,16 @@
 	<title>renderPositions</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="js/node_modules/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.cosmo.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
+    
+    <link href="js/node_modules/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+    <link href="js/node_modules/jsoneditor/examples/css/darktheme.css" rel="stylesheet" type="text/css">
+    <script src="js/node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
+    
     <style>
         #body {
             position: relative;
@@ -27,7 +33,41 @@
             <div id="annotations" style="position:absolute; left:0; top:0;width:100%; height:100%; overflow: hidden; pointer-events: none; margin: none;"></div>
         </div>
         <div class="col-sm-4" id="detailView" style="height: 100vh;">
-            <div id="heliostatPositionEditor" style="height: 50%; padding-bottom:50px; margin-bottom: -50px;"></div>
+
+            <div id="inspector" style="height: 100%; padding-bottom:50px; margin-bottom: -50px;">
+
+                <div class="bs-component">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                            <span class="navbar-brand">Inspector</span>
+                            </div>
+
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Quick access <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>&nbsp;Recents</li>
+                                            <li><a href="#">Action</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something else here</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Separated link</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">One more separated link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+                <div id="inspectorContent">
+                </div>
+            </div>
+
             <div id="buttons" style="height: 50px;">
                 <button type="button" class="btn btn-secondary" id="heliostatPositionRefresh" style="visibility: hidden;">
                     <span class="glyphicon glyphicon-refresh"></span>
@@ -36,21 +76,27 @@
                     <span class="glyphicon glyphicon-ok"></span>
                 </button>
             </div>
-            <div id="heliostatModuleEditor" style="height: 50%"></div>
-        </div>
 
-        <div id="alertConsole" style="position: absolute; padding-left: 100px; width: 100%; z-index: 1000">
+            <div id="alertConsole" style="position: absolute; padding-left: 100px; width: 100%; z-index: 1000">
 
-        </div>
+            </div>
     </div>
-    <script src="js/node_modules/three/build/three.min.js"></script>
+    </div>
+    <script src="js/node_modules/three/build/three.js"></script>
     <script src="js/node_modules/three/examples/js/controls/OrbitControls.js"></script>
     <script src="js/node_modules/three/examples/js/libs/stats.min.js"></script>
     <script src="js/node_modules/three/examples/js/Detector.js"></script>
     <script src="js/node_modules/three/examples/js/renderers/Projector.js"></script>
 
-    <script src="js/node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
+    <script src="js/THREE.KC.Annotations.js"></script>
+    <script src="js/THREE.KC.SceneObject.js"></script>
+    <script src="js/THREE.KC.Notices.js"></script>
+    <script src="js/THREE.KC.JsonEditorREST.js"></script>
 
+    <script src="js/KC31/Grid.js"></script>
+    <script src="js/KC31/HeliostatPosition.js"></script>
+    <script src="js/KC31/SiteSettings.js"></script>
+    <script src="js/KC31/SolarTracker.js"></script>
     <script src="js/renderPositions.js"></script>
 </body>
 
