@@ -97,6 +97,10 @@ class SolarTracker {
         return this.circle.geometry.boundingBox.clone();
     }
 
+    inspect(inspector) {
+        
+    }
+
     refresh() {
         $.ajax({
             url: "/getSolarTracking"
