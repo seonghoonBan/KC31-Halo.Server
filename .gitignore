@@ -37,3 +37,5 @@ Release/
 
 *.pyc
 *.pyo
+
+node_modules
